@@ -6,6 +6,7 @@
 }
 .bg-black {
     background-color: #393D49!important;
+    width: 200px;
 }
 .side-scrol {
     position: relative;
@@ -239,7 +240,10 @@ body,html {
 }
 
 .goods_coantainer .originalPrice,.goods_coantainer .presentPrice {
-    min-width: 86px;
+    width: 86px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .goods_coantainer input[type=checkbox], .goods_coantainer input[type=radio], .goods_coantainer select {
@@ -256,7 +260,7 @@ body,html {
     display: flex;
 }
 .layui-form-select dl {
-    display: block;
+    display: none;
 }
 
 .goods_search {
@@ -277,4 +281,11 @@ body,html {
 
 #page {
     text-align: center;
+}
+
+#tbody .goodsname {
+    width: 340px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

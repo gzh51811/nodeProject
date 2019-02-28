@@ -99,17 +99,16 @@
 
                                     <div class="layui-form-select">
                                         <div class="layui-select-title">
-                                            <input type="text" placeholder="请选择分类" value="" class="layui-input">
+                                            <input type="text" placeholder="请选择分类" value="" class="layui-input" id="classifiedContent">
                                             <i class="layui-edge"></i>
                                         </div>
-                                        <dl class="layui-anim layui-anim-upbit" style="">
-                                            <dd lay-value="" class="layui-select-tips layui-this">请选择分类</dd>
-                                            <dd lay-value="1" class="">layer</dd>
-                                            <dd lay-value="2" class="">form</dd>
-                                            <dd lay-value="3" class="">layim</dd>
-                                            <dd lay-value="4" class="">element</dd>
-                                            <dd lay-value="5" class="">laytpl</dd>
-
+                                        <dl class="layui-anim layui-anim-upbit" id="classifiedSearch">
+                                            <dd class="" data-classification='faceCream'>面霜</dd>
+                                            <dd class="" data-classification='lipstick'>口红</dd>
+                                            <dd class="" data-classification='cleanser'>洁面乳</dd>
+                                            <dd class="" data-classification='essence'>精华</dd>
+                                            <dd class="" data-classification='eyeCream'>眼霜</dd>
+                                            <dd class="" data-classification='sunscreen'>防晒霜</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -128,8 +127,8 @@
                                 </th>
                                 <th>#
                                     <span class="layui-table-sort layui-inline">
-                                        <i class="layui-edge layui-table-sort-asc" title="升序"></i>
-                                        <i class="layui-edge layui-table-sort-desc" title="降序"></i>
+                                        <i class="layui-edge layui-table-sort-asc" title="升序" id="ascending"></i>
+                                        <i class="layui-edge layui-table-sort-desc" title="降序" id="descending"></i>
                                     </span>
                                 </th>
                                 <th class="listGoods">商品名称</th>

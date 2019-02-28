@@ -1,0 +1,165 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    background: url(../assets/images/4.jpg);
+    position: relative;
+}
+#login-box{
+    width: 600px;
+    height: 563px;
+    border: 1px solid #ccc;
+    background:initial;
+    position: absolute;
+    left: 450px;
+    top: 72px;
+    .top{
+        height: 120px;
+        position: relative;
+        .img{
+            width: 80px;
+            height: 80px;
+            background: url(../assets/images/ico5.png) no-repeat;
+            background-size:contain;
+            position: absolute;
+            left: 150px;
+            top: 30px;
+        }
+        span{
+            position: absolute;
+            right: 160px;
+            top: 40px;
+            font-size: 28px;
+            color: #ccc;
+        }
+    }
+    .bottom{
+        position: relative;
+        .yonghu{
+            position: absolute;
+            top: 20px;
+            left: 100px;
+            width: 400px;
+            height: 50px;
+            border: 1px solid #ccc;
+            background:initial;
+            text-align: center;
+            line-height: 50px;
+            img{
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                width: 20px;
+                height: 20px;
+            }
+            input{
+                width: 300px;
+                height: 30px;
+                border: none;
+                outline:none;
+                background:initial;
+            }
+        }
+        .mima{
+            position: absolute;
+            top: 90px;
+            left: 100px;
+            width: 400px;
+            height: 50px;
+            border: 1px solid #ccc;
+            background:initial;
+            text-align: center;
+            line-height: 50px;
+            img{
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                width: 20px;
+                height: 20px;
+            }
+            input{
+                width: 300px;
+                height: 30px;
+                border: none;
+                outline:none;
+                background:initial;
+            }
+        }
+        .yanzhengma{
+            position: relative;
+            top: 160px;
+            left: 100px;
+            width: 200px;
+            height: 50px;
+            border: 1px solid #ccc;
+            background:initial;
+            text-align: center;
+            line-height: 50px;
+            img{
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                width: 20px;
+                height: 20px;
+            }
+            input{
+                width: 100px;
+                height: 30px;
+                border: none;
+                outline:none;
+                background:initial;
+            }
+           
+        }
+        .yanzheng{
+            display: block;
+            position: absolute;
+            top: 160px;
+            right: 100px;
+            width: 150px;
+            height: 50px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+        .shurukuang{
+            position: absolute;
+            left:100px;
+            top: 250px;
+            input{
+                width: 15px;
+                height: 15px;
+            }
+            .jizhumima{
+                font-size: 14px;
+            }
+        }
+        .wangji{
+            position: absolute;
+            top: 250px;
+            right:100px;
+        }
+        .btn{
+            width: 400px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            background: initial;
+            border: 1px solid #ccc;
+        }
+    }
+}

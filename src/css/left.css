@@ -1,0 +1,280 @@
+.side {
+ 
+   height:100%;
+    width: 200px;
+    overflow-x: hidden;
+}
+.bg-black {
+    background-color: #393D49!important;
+}
+.side-scrol {
+    position: relative;
+    
+    height: 100%;
+   
+}
+.nav {
+    position: relative;
+    padding: 0 20px;
+    background-color: #393D49;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.nav {
+    width: 200px;
+    padding: 0;
+}
+
+/* li item */
+.nav .nav-item {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    line-height: 60px;
+}
+.nav .nav-item {
+    display: block;
+    width: 100%;
+    /* line-height: 45px; */
+}
+
+/* logo */
+.nav .logo {
+    height: 50px;
+    line-height: 65px;
+    display: flex;
+    padding-left: 34px;
+}
+
+
+
+.nav .logo  .logo_img {
+    display: block;
+    width: 20px;
+    height: 26px;
+    background: url("../assets/images/u80.png") no-repeat;
+    margin-top: 19px;
+}
+
+.nav .logo  .logo_title {
+    color: #C2C2C2;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+
+.nav-item a {
+    display: block;
+    padding: 0 50px;
+    color: #fff;
+    
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    text-decoration: none;
+}
+
+.nav-item a {
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-left: 4px solid transparent;
+}
+/* 三角 */
+.nav .nav-more {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid dashed dashed;
+    border-color: #fff transparent transparent;
+    overflow: hidden;
+    cursor: pointer;
+    /* transition: all .2s;
+    -webkit-transition: all .2s; */
+    position: absolute;
+    top: 50%;
+    right: 3px;
+    margin-top: -3px;
+    border-width: 6px;
+    border-top-color: rgba(255,255,255,.7);
+}
+.nav-more {
+    margin-top: -9px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #fff;
+}
+.nav .nav-more {
+    right: 10px;
+}
+
+/* 二级菜单 */
+.nav-child {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 65px;
+    min-width: 100%;
+    line-height: 36px;
+    padding: 5px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 2px;
+    white-space: nowrap;
+    
+}
+.nav-itemed>.nav-child {
+    display: none;
+    padding: 0;
+    background-color: rgba(0,0,0,.3)!important;
+}
+
+.nav .nav-child {
+    position: relative;
+    z-index: 0;
+    top: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.nav .nav-child a {
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    color: rgba(255,255,255,.7);
+}
+
+/* 鼠标经过效果 */
+.nav-item a:hover {
+    border-left: 4px #58bc58 solid;
+    background: rgba(251, 238, 238, 0.41)
+}
+body,html {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+#container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* 右边 */
+.context {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.context_header {
+    margin: 15px 0 20px 0;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+.context_container {
+    margin-top: 25px;
+    width: 100%;
+    
+    flex: 1;
+}
+
+.goods_coantainer {
+    border: 15px solid #ddd;
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.layui-table-view .layui-form-checkbox[lay-skin=primary] i {
+    width: 18px;
+    height: 18px;
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #5FB878;
+    color: #fff;
+}
+.layui-form-checkbox[lay-skin=primary] i {
+    right: auto;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border: 1px solid #d2d2d2;
+    font-size: 12px;
+    border-radius: 2px;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.context_container .operation {
+    width: 108px;
+    text-align: center;
+}
+.goods_coantainer .layui-table td, .goods_coantainer .layui-table th {
+    
+    padding: 8px 7px;
+    
+}
+.goods_coantainer .layui-table-cell {
+    padding: 0;
+}
+
+.goods_coantainer .listGoods {
+    min-width: 190px;
+}
+
+.goods_coantainer .originalPrice,.goods_coantainer .presentPrice {
+    min-width: 86px;
+}
+
+.goods_coantainer input[type=checkbox], .goods_coantainer input[type=radio], .goods_coantainer select {
+    display: none;
+
+}
+.goods_coantainer .laytable-cell-checkbox {
+    text-align: left;
+}
+
+.functionalOperation {
+    margin: 10px 0;
+    margin-bottom: 20px;
+    display: flex;
+}
+.layui-form-select dl {
+    display: block;
+}
+
+.goods_search {
+    margin-left: 76px;
+}
+
+.goods_search .searchTitle {
+    width: 270px;
+    margin-right: 20px;
+}
+.searchTitle .layui-input-inline {
+    width: 100%;
+}
+
+.goods_searchBtn {
+    margin-left: 20px;
+}
+
+#page {
+    text-align: center;
+}

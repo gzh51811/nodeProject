@@ -76,29 +76,55 @@ $(function () {
                 //完整功能
                 laypage.render({
                     elem: 'page'
-                    , count: len  //总共商品数量
+                    , count: len,  //总共商品数量
+                    limit: qty
                     , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
                     , jump: function (obj) {
                         console.log(obj);
                         let { curr } = obj;  //当前页数
                         //console.log(curr);
-                        var url = `http://localhost:1811/api/list?page=${curr}&qty=${qty}`;
-                        //console.log(url)
-                        //请求当前页数数据
+                        // var url = `http://localhost:1811/api/list?page=${curr}&qty=${qty}`;
+                        // //console.log(url)
+                        // //请求当前页数数据
+                        // $.ajax({
+                        //     type: 'get',
+                        //     data: curr,
+                        //     url: url,
+                        //     success: function (str) {
+                        //         //console.log(str.data)
+                        //         $('tbody').html(render(str.data));
+
+                        //     }
+                        // });
+
+                        //查看cookie中状态
+                        //$.removeCookie('name', { path: '/' });
+                        //需求： 可以按goodID/价格排序
+                        let sorting = $.cookie('name');
+                        //console.log(sorting);
                         $.ajax({
                             type: 'get',
-                            data: curr,
-                            url: url,
+                            data: {
+                                sorting: sorting,
+                                curr: curr,
+                                qty: qty
+                            },
+                            url: 'http://localhost:1811/api/list/sorting/page',
                             success: function (str) {
-                                //console.log(str.data)
                                 $('tbody').html(render(str.data));
-
                             }
                         });
 
-                        //查看cookie中状态
-                        let sorting = document.cookie;
-                        console.log(sorting);//youwenti
+
+                        //搜索某一类
+                        $('.goods_searchBtn').on('click', function () {
+                            let classifiedContent = $('#classifiedContent').val().trim();
+                            let title = $('#title').val();
+                            if (classifiedContent || title) {
+                                console.log(classifiedContent, title);
+                            }
+                        });
+
                     }
                 });
 
@@ -223,7 +249,7 @@ $(function () {
     //升序
     $('#ascending').on('click', function () {
         //用cookie存起当前的状态
-        document.cookie = name = 1;
+        $.cookie('name', 1);
         $.ajax({
             type: 'get',
             data: {
@@ -246,7 +272,7 @@ $(function () {
     //降序
     $('#descending').on('click', function () {
         //用cookie存起当前的状态
-        document.cookie = name = -1;
+        $.cookie('name', -1);
         $.ajax({
             type: 'get',
             data: {

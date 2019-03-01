@@ -17,7 +17,7 @@ $(function () {
             //渲染数据
 
             let { data, len } = str;
-            //console.log(len)
+            console.log(data)
             let html = data.map(function (item) {
                 return `<tr data-id='${item.goodId}'>
                                 <td class="layui-table-col-special">
@@ -56,7 +56,7 @@ $(function () {
                                 </td>
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-11">
-                                        <a class="layui-btn layui-btn-xs">编辑</a>
+                                        <a class="layui-btn layui-btn-xs edit">编辑</a>
                                         <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
                                         <a class="layui-btn layui-btn-normal layui-btn-xs">下架</a>
                                     </div>
@@ -120,8 +120,62 @@ $(function () {
                         $('.goods_searchBtn').on('click', function () {
                             let classifiedContent = $('#classifiedContent').val().trim();
                             let title = $('#title').val();
-                            if (classifiedContent || title) {
-                                console.log(classifiedContent, title);
+                            if (classifiedContent && title) {
+                                //console.log(classification, title);
+                                $('#classifiedSearch').find('dd').each(function (i, item) {
+                                    if ($(item).html() == classifiedContent) {
+                                        classifiedContent = $(item).attr('data-classification');
+                                    }
+                                })
+                                $.ajax({
+                                    type: 'get',
+                                    data: {
+                                        sorting,
+                                        curr: curr,
+                                        qty: qty,
+                                        title: title,
+                                        classifiedContent: classifiedContent
+                                    },
+                                    url: 'http://localhost:1811/api/list/sorting/search',
+                                    success: function (str) {
+                                        $('tbody').html(render(str.data));
+                                        //console.log(str)
+                                        console.log(1)
+                                        layui.use(['laypage', 'layer'], function () {
+                                            var laypage = layui.laypage
+                                                , layer = layui.layer;
+                                            laypage.render({
+                                                elem: 'page',
+                                                count: str.len,  //总共商品数量
+                                                limit: qty,
+                                                layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+                                                jump: function (obj) {
+                                                    let { curr } = obj;
+                                                    let sorting = $.cookie('name');
+                                                    //console.log(sorting);
+                                                    
+                                                    $.ajax({
+                                                        type: 'get',
+                                                        data: {
+                                                            sorting: sorting,
+                                                            curr: curr,
+                                                            qty: qty,
+                                                            title: title,
+                                                            classifiedContent: classifiedContent
+                                                        },
+                                                        url: 'http://localhost:1811/api/list/sorting/search',
+                                                        success: function (str) {
+                                                            //console.log(2222)
+                                                            $('tbody').html(render(str.data));
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            } else {
+                                alert('请输入分类和内容')
                             }
                         });
 
@@ -174,7 +228,7 @@ $(function () {
                                 </td>
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-11">
-                                        <a class="layui-btn layui-btn-xs">编辑</a>
+                                        <a class="layui-btn layui-btn-xs edit">编辑</a>
                                         <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
                                         <a class="layui-btn layui-btn-normal layui-btn-xs">下架</a>
                                     </div>
@@ -261,7 +315,7 @@ $(function () {
             success: function (str) {
                 //console.log(str.data)
                 $('tbody').html(render(str.data));
-                
+
 
             }
         });
@@ -287,6 +341,21 @@ $(function () {
 
             }
         });
+    });
+
+
+    //添加商品
+    $('#add').on('click', function () {
+        location.href = './addGoods.html';
+    });
+
+
+    //编辑商品
+    $('#tbody').on('click', '.edit', function () {
+       
+        let id = $(this).parents('tr').attr('data-id');
+
+        location.href = './edit.html?' + id;
     })
 
 })

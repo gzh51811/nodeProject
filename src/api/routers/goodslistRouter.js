@@ -41,7 +41,7 @@ Router.post('/', urlencodedParser, jsonParser, (req, res) => {
             qty,
             page
         });
-        
+
     });
 
 

@@ -100,16 +100,8 @@ Router.get('/sorting/page', (req, res) => {
 
         // // 使用某个集合
         let collecton = db.collection('goods');
-
         let num = qty * curr;  //跳过数量
-        
-
         let data = await collecton.find().sort({ goodId: Number(sorting) }).limit(Number(qty)).skip(num).toArray();
-
-
-       
-        
-
         // //查全部返回长度
         let len = await collecton.find().toArray();
         len = len.length;
@@ -124,6 +116,42 @@ Router.get('/sorting/page', (req, res) => {
     });
 
 });
+
+
+//搜索某一类()
+Router.get('/sorting/search', (req, res) => {
+    let { curr, qty, sorting, title, classifiedContent } = req.query;  //解构  
+
+    console.log(curr, qty, sorting, title, classifiedContent)
+    //res.send(req.query);
+
+    MongoClient.connect("mongodb://localhost:27017", async function (err, client) {
+        if (err) throw err;
+
+        let db = client.db('xiaoming'); //连接数据库
+
+        // // 使用某个集合
+        let collecton = db.collection('goods');
+        let num = qty * curr;  //跳过数量
+        let condition = `/${title}/g`;
+        //console.log(condition)
+        //db.getCollection('goods').find({ classification: "essence", name: {"$regex": /精华/g}})
+        let data = await collecton.find({ classification: classifiedContent, name: { "$regex": eval(`/${title}/g`) } }).sort({ goodId: Number(sorting) }).limit(Number(qty)).skip(num).toArray();
+        // //查全部返回长度
+        let len = await collecton.find({ classification: classifiedContent, name: { "$regex": eval(`/${title}/g`) } }).sort({ goodId: Number(sorting) }).toArray();
+        len = len.length;
+        res.send({
+            data,
+            len,
+            qty,
+            curr
+        });
+    });
+
+});
+
+
+
 
 
 

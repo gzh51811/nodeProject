@@ -57,8 +57,8 @@ $(function () {
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-11">
                                         <a class="layui-btn layui-btn-xs edit">编辑</a>
-                                        <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
-                                        <a class="layui-btn layui-btn-normal layui-btn-xs">下架</a>
+                                        <a class="layui-btn layui-btn-danger layui-btn-xs delete">删除</a>
+                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">下架</a>
                                     </div>
                                 </td>
                             </tr>`;
@@ -229,8 +229,8 @@ $(function () {
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-11">
                                         <a class="layui-btn layui-btn-xs edit">编辑</a>
-                                        <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
-                                        <a class="layui-btn layui-btn-normal layui-btn-xs">下架</a>
+                                        <a class="layui-btn layui-btn-danger layui-btn-xs delete">删除</a>
+                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">下架</a>
                                     </div>
                                 </td>
                             </tr>`;
@@ -356,7 +356,63 @@ $(function () {
         let id = $(this).parents('tr').attr('data-id');
 
         location.href = './edit.html?' + id;
-    })
+    });
+
+    //删除商品
+    $('#tbody').on('click', '.delete', function () {
+
+        let res = window.confirm('您真的不要我了吗？');
+        if (res) {
+            let goods_name = '';
+            goods_name = $(this).parents('tr').find('.goodsname').find('div').html();
+            console.log(goods_name)
+            $(this).parents('tr').remove();
+            
+            //请求数据库删除
+            $.ajax({
+                type: 'get',
+                data: {
+                    goods_name
+                },
+                url: 'http://localhost:1811/api/delete',
+                success: function (str) {
+                    if (str == 'yes') {
+                        alert('删除商品成功')
+                    }
+                }
+            })
+
+        }
+    });
+
+    //商品下架
+    $('#tbody').on('click', '.shelves', function () {
+
+        let res = window.confirm('您真的需要下架该商品吗？');
+        if (res) {
+            let goods_name = '';
+            goods_name = $(this).parents('tr').find('.goodsname').find('div').html();
+            
+           
+
+            //请求数据库下架
+            $.ajax({
+                type: 'get',
+                data: {
+                    goods_name,
+                    shelves: true
+                },
+                url: 'http://localhost:1811/api/delete',
+                success: function (str) {
+                    if (str == 'yes') {
+                        alert('商品下架成功');
+                    }
+                }
+            })
+
+        }
+    });
+
 
 })
 

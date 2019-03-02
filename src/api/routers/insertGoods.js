@@ -13,8 +13,8 @@ Router.get('/', (req, res) => {
 
     console.log(req.query)  //解构  
     //console.log(qty, page)
-    let { goods_name, originalPrice, salespPrice, addTime, classification, stock, goods_content } = req.query;
-    
+    let { goods_name, originalPrice, salespPrice, addTime, classification, stock, goods_content, imgsrc } = req.query;
+
 
     MongoClient.connect("mongodb://localhost:27017", async function (err, client) {
         if (err) throw err;
@@ -27,7 +27,7 @@ Router.get('/', (req, res) => {
         let len = await collecton.find().toArray();
         len = len.length;
 
-        let res = await collecton.insertOne({ goodId: len + 1, nowPrice: salespPrice, passPrice: originalPrice, inventory: stock, classification: classification, state: "online", addTime: addTime, name: goods_name, goods_content: goods_content });
+        let res = await collecton.insertOne({ goodId: len + 1000, nowPrice: salespPrice, passPrice: originalPrice, inventory: stock, classification: classification, state: "online", addTime: addTime, name: goods_name, goods_content: goods_content, imgsrc });
 
     });
     res.send('yes');

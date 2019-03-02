@@ -77,6 +77,7 @@ $('#submit').on('click', function () {
     
 
     let data = new FormData();
+    let imgsrc = goods.files[0].name;
     
 
     for (let i = 0; i < goods.files.length; i++) {
@@ -88,7 +89,7 @@ $('#submit').on('click', function () {
     //发送请求
     if (goods_name && originalPrice && salespPrice && classification && stock && goods_content && data.get('goods')) {
         //console.log(goods_name, originalPrice, salespPrice, classification, stock, goods_content);
-        
+        console.log(imgsrc);
         
         let xhr = new XMLHttpRequest();
         xhr.open('post', '/api/upload', true);
@@ -106,9 +107,10 @@ $('#submit').on('click', function () {
                 addTime: Date.now(),
                 classification: classification,
                 stock: stock,
-                goods_content: goods_content
+                goods_content: goods_content,
+                imgsrc
             },
-            url: 'http://localhost:1811/api/upload',
+            url: 'http://localhost:1811/api/insertGoods',
             success: function (str) {
                 if (str == 'yes') {
                     alert('添加商品成功');

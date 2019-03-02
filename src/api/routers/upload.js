@@ -22,9 +22,11 @@ var createFolder = function (folder) {
     }
 };
 
-var uploadFolder = './upload/';
+var uploadFolder = './assets/images/goods/';
 
 createFolder(uploadFolder);
+
+let imgsrc = '';
 
 // 通过 filename 属性定制
 var storage = multer.diskStorage({
@@ -34,8 +36,8 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
         // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
         let ext = path.extname(file.originalname)
-       
-        cb(null, Date.now() + '_'+file.originalname);
+        imgsrc = Date.now() + '_' + file.originalname;
+        cb(null, file.originalname);
     }
 });
 
@@ -47,7 +49,7 @@ Router.post('/', upload.single('goods'),  function (req, res, next) {
     var file = req.file;
 
 
-    res.send({ ret_code: '0' });
+    res.send({ ret_code: '0',imgsrc });
 });
 
 

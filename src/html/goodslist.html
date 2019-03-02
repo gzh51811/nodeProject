@@ -13,7 +13,9 @@
 
     <script src="../lib/jquery2.0.3.js"></script>
     <script src="../lib/jquery.cookie.js"></script>
+    <script src="../assets/layui/layui.js"></script>
 
+    <script src="../js/goodslist.js"></script>
 </head>
 
 <body>
@@ -82,7 +84,7 @@
                     <div class="functionalOperation layui-row">
                         <div class="goods_edit layui-col-xs4">
                             <button class="layui-btn layui-btn-normal" id="add"><i class="layui-icon"></i>添加</button>
-                            <button class="layui-btn layui-btn-normal layui-btn-warm"><i
+                            <button class="layui-btn layui-btn-normal layui-btn-warm" id="deleteAll"><i
                                     class="layui-icon"></i>删除</button>
                         </div>
                         <div class="goods_search layui-col-xs8">
@@ -99,7 +101,8 @@
 
                                     <div class="layui-form-select">
                                         <div class="layui-select-title">
-                                            <input type="text" placeholder="请选择分类" value="" class="layui-input" id="classifiedContent">
+                                            <input type="text" placeholder="请选择分类" value="" class="layui-input"
+                                                id="classifiedContent">
                                             <i class="layui-edge"></i>
                                         </div>
                                         <dl class="layui-anim layui-anim-upbit" id="classifiedSearch">
@@ -118,31 +121,36 @@
                         </div>
 
                     </div>
-                    <table class="layui-table" lay-filter="demo">
-                        <thead>
-                            <tr>
-                                <th lay-data=>
-                                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                        <i class="layui-icon layui-icon-ok"></i></div>
-                                </th>
-                                <th>#
-                                    <span class="layui-table-sort layui-inline">
-                                        <i class="layui-edge layui-table-sort-asc" title="升序" id="ascending"></i>
-                                        <i class="layui-edge layui-table-sort-desc" title="降序" id="descending"></i>
-                                    </span>
-                                </th>
-                                <th class="listGoods">商品名称</th>
-                                <th>分类</th>
-                                <th class='originalPrice'>价格（原价）</th>
-                                <th class='presentPrice'>价格（现价）</th>
-                                <th>库存</th>
-                                <th>状态</th>
-                                <th>添加时间</th>
-                                <th class="operation">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                            <!-- <tr class="">
+                    <form class="">
+                        <table class="layui-table" lay-filter="demo">
+                            <thead>
+                                <tr>
+                                    <th>                             
+                                        <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="">
+                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"  id="checkAll">
+                                                <i class="layui-icon layui-icon-ok"></i>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>#
+                                        <span class="layui-table-sort layui-inline">
+                                            <i class="layui-edge layui-table-sort-asc" title="升序" id="ascending"></i>
+                                            <i class="layui-edge layui-table-sort-desc" title="降序" id="descending"></i>
+                                        </span>
+                                    </th>
+                                    <th class="listGoods">商品名称</th>
+                                    <th>分类</th>
+                                    <th class='originalPrice'>价格（原价）</th>
+                                    <th class='presentPrice'>价格（现价）</th>
+                                    <th>库存</th>
+                                    <th>状态</th>
+                                    <th>添加时间</th>
+                                    <th class="operation">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <!-- <tr class="">
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
                                         <input type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="">
@@ -185,8 +193,9 @@
                                     </div>
                                 </td>
                             </tr> -->
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </form>
 
                     <!-- 分页 -->
                     <div id="page">
@@ -197,9 +206,7 @@
             </div>
         </div>
 
-        <script src="../assets/layui/layui.js"></script>
 
-        <script src="../js/goodslist.js"></script>
 
         <script>
 
@@ -231,6 +238,7 @@
             })();
         </script>
         <script>
+            
             layui.use('element', function () {
                 var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
@@ -283,6 +291,8 @@
                     active[type] ? active[type].call(this) : '';
                 });
             });
+
+           
         </script>
 
 

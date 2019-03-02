@@ -17,7 +17,7 @@ Router.get('/', (req, res) => {
 
     
 
-    console.log(goods_name)
+    
     MongoClient.connect("mongodb://localhost:27017", async function (err, client) {
         if (err) throw err;
 
@@ -33,6 +33,7 @@ Router.get('/', (req, res) => {
         } else {
             //删除商品
             let len = await collecton.deleteOne({ name: goods_name });
+            console.log(goods_name)
             console.log('删除')
         }
      

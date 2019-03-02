@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品分类</title>
+
+    <link href="../css/common.css" type="text/css" rel="stylesheet" />
+    <link href="../assets/layui/css/layui.css" type="text/css" rel="stylesheet" />
+    <link href="../css/left.css" type="text/css" rel="stylesheet" />
+
+    <script src="../lib/jquery2.0.3.js"></script>
+    <script src="../lib/jquery.cookie.js"></script>
+    <script src="../assets/layui/layui.js"></script>
+    <script src="../js/classificationGoods.js"></script>
+
+</head>
+
+<body>
+    <div id="container" class="">
+        <!-- 左边 -->
+        <div class="bg-black">
+            <div class="side-scrol">
+                <ul class="nav">
+                    <li class="logo">
+
+                        <!-- <img src="../assets/images/u80.png" class="logo_img"> -->
+                        <a href="##" class="logo_img"></a>
+                        <span class="logo_title">后台管理系统</span>
+
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">商品管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="#">商品列表</a>
+                            </dd>
+                            <dd>
+                                <a href="#">商品列表</a>
+                            </dd>
+                            <dd>
+                                <a href="#">添加商品</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">用户管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="###">用户列表</a>
+                            </dd>
+                            <dd>
+                                <a href="###">添加用户</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">订单管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="#">订单列表</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- 右边 -->
+        <div class="context">
+            <div class="context_header">
+                <span class="layui-breadcrumb">
+                    <a href="">首页</a>
+                    <a href="">商品管理</a>
+                    <a><cite>商品分类</cite></a>
+                </span>
+            </div>
+            <!-- 内容 -->
+            <div class="context_container">
+                <div class="goods_coantainer">
+                    <div class="functionalOperation layui-row">
+                        <div class="goods_edit layui-col-xs4">
+                            <button class="layui-btn layui-btn-normal" id="add"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-warm" id="deleteAll"><i
+                                    class="layui-icon"></i>删除</button>
+                        </div>
+
+
+                    </div>
+                    <form class="">
+                        <table class="layui-table" lay-filter="demo">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary"
+                                                checked="">
+                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"
+                                                id="checkAll">
+                                                <i class="layui-icon layui-icon-ok"></i>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>#
+
+                                    </th>
+                                    <th class="listGoods">商品分类</th>
+                                    <th>添加时间</th>
+
+                                    <th class="operation">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <!-- <tr class="">
+                                    <td class="layui-table-col-special">
+                                        <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary"
+                                                checked="">
+                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                <i class="layui-icon layui-icon-ok selectedBoxi"></i>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="layui-table-cell laytable-cell-1-0-1">10002</div>
+                                    </td>
+                                    
+                                    <td class="">
+                                        <div class="layui-table-cell laytable-cell-1-0-7">上线</div>
+                                    </td>
+                                    <td class="">
+                                        <div class="layui-table-cell laytable-cell-1-0-8">2018-11-11
+                                        </div>
+                                    </td>
+                                    <td class="layui-table-col-special">
+                                        <div class="layui-table-cell laytable-cell-1-0-11">
+                                            <a class="layui-btn layui-btn-xs">编辑</a>
+                                            <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
+                                        </div>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+
+
+            (function () {
+                /* 点击出现二级菜单 */
+                var key = true;
+                $(".nav-item>a").click(function () {
+                    if (key) {
+                        $(this).find("span").css({
+                            "marginTop": "-9px",
+                            "borderStyle": "dashed dashed solid",
+                            "borderColor": "transparent transparent #fff"
+                        });
+                        key = false;
+                    } else {
+                        $(this).find("span").css({
+                            "marginTop": "-3px",
+                            "borderStyle": "solid dashed dashed",
+                            "borderColor": "#fff transparent transparent"
+                        });
+                        key = true;
+                    }
+
+
+                    var str = $(this).next().stop().slideToggle();
+
+                })
+            })();
+        </script>
+        <script>
+
+            layui.use('element', function () {
+                var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+                //监听导航点击
+                element.on('nav(demo)', function (elem) {
+                    //console.log(elem)
+                    layer.msg(elem.text());
+                });
+            });
+
+
+        </script>
+
+
+</body>
+
+</html>

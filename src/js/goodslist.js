@@ -23,8 +23,8 @@ $(function () {
                                 <td class="layui-table-col-special">
                                     <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
                                         <input type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="">
-                                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                            <i class="layui-icon layui-icon-ok"></i>
+                                        <div class="layui-unselect layui-form-checkbox selectedBox" lay-skin="primary">
+                                            <i class="layui-icon layui-icon-ok selectedBoxi"></i>
                                         </div>
                                     </div>
                                 </td>
@@ -80,7 +80,7 @@ $(function () {
                     limit: qty
                     , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
                     , jump: function (obj) {
-                        console.log(obj);
+                        //console.log(obj);
                         let { curr } = obj;  //当前页数
                         //console.log(curr);
                         // var url = `http://localhost:1811/api/list?page=${curr}&qty=${qty}`;
@@ -112,6 +112,7 @@ $(function () {
                             url: 'http://localhost:1811/api/list/sorting/page',
                             success: function (str) {
                                 $('tbody').html(render(str.data));
+
                             }
                         });
 
@@ -153,7 +154,7 @@ $(function () {
                                                     let { curr } = obj;
                                                     let sorting = $.cookie('name');
                                                     //console.log(sorting);
-                                                    
+
                                                     $.ajax({
                                                         type: 'get',
                                                         data: {
@@ -193,10 +194,10 @@ $(function () {
         let html = data.map(function (item) {
             return `<tr data-id='${item.goodId}'>
                                 <td class="layui-table-col-special">
-                                    <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+                                    <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox ">
                                         <input type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="">
-                                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                            <i class="layui-icon layui-icon-ok"></i>
+                                        <div class="layui-unselect layui-form-checkbox selectedBox" lay-skin="primary">
+                                            <i class="layui-icon layui-icon-ok selectedBoxi"></i>
                                         </div>
                                     </div>
                                 </td>
@@ -352,7 +353,7 @@ $(function () {
 
     //编辑商品
     $('#tbody').on('click', '.edit', function () {
-       
+
         let id = $(this).parents('tr').attr('data-id');
 
         location.href = './edit.html?' + id;
@@ -367,7 +368,7 @@ $(function () {
             goods_name = $(this).parents('tr').find('.goodsname').find('div').html();
             console.log(goods_name)
             $(this).parents('tr').remove();
-            
+
             //请求数据库删除
             $.ajax({
                 type: 'get',
@@ -392,8 +393,8 @@ $(function () {
         if (res) {
             let goods_name = '';
             goods_name = $(this).parents('tr').find('.goodsname').find('div').html();
-            
-           
+
+
 
             //请求数据库下架
             $.ajax({
@@ -412,6 +413,99 @@ $(function () {
 
         }
     });
+
+
+    //选中商品
+
+    $('#checkAll').on('click', function () {
+
+        $(this).addClass('layui-form-checked');
+        if ($(this).find('i').attr('style')) {
+            //全不选
+            $(this).find('i').attr('style', '');
+            $('.selectedBoxi').attr('style', '');
+            $('.selectedBoxi').attr('data-ok', 'false');
+        } else {
+            //全选
+            $(this).find('i').css({ 'background': '#86f567' });
+            $('.selectedBoxi').css({ 'background': '#86f567' });
+            $('.selectedBoxi').attr('data-ok', 'true');
+        }
+
+    });
+
+
+    var arrselected = [];
+    $('#tbody').on('click', '.selectedBoxi', function () {
+        arrselected = [];
+        $(this).prev().attr('checked');
+        $(this).addClass('layui-form-checked');
+        if ($(this).attr('style')) {
+            $(this).attr('style', '');
+            $(this).attr('data-ok', 'false');
+        } else {
+            $(this).css({ 'background': '#86f567' });
+            $(this).attr('data-ok', 'true');
+        }
+
+
+        //存被选中的行的下标数
+        for (var i = 0; i < $('.selectedBoxi').size(); i++) {
+            if (($('.selectedBoxi').eq(i).attr('data-ok')) === 'true') {
+
+                arrselected.push(i);
+            }
+        }
+
+
+        //所有商品被选上时  总开关勾上
+        if (arrselected.length == $('#tbody tr').size()) {
+            $('#checkAll').find('i').css({ 'background': '#86f567' });
+        } else {
+            $('#checkAll').find('i').attr('style', '');
+        }
+
+
+    });
+
+
+    //删除多条
+    $('#deleteAll').on('click', function () {
+        //console.log(arrselected)
+        if (arrselected.length > 0) {
+            let res = window.confirm('您真的要删除这些商品吗？');
+            if (res) {
+
+                for (var i = arrselected.length - 1; i >= 0; i--) {
+
+                    let goods_name = '';
+                    goods_name = $('#tbody tr').eq(arrselected[i]).find('.goodsname').find('div').html();
+                    console.log(goods_name)
+                    // //请求数据库删除
+                    $.ajax({
+                        type: 'get',
+                        data: {
+                            goods_name
+                        },
+                        url: 'http://localhost:1811/api/delete',
+                        success: function (str) {
+                            if (str == 'yes') {
+
+                            }
+                        }
+                    });
+                    $('#tbody tr').eq(arrselected[i]).remove();
+                }
+
+            }
+        }
+    });
+
+
+
+
+
+
 
 
 })

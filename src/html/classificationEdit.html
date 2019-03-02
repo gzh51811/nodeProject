@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类编辑</title>
+
+    <link href="../css/common.css" type="text/css" rel="stylesheet" />
+    <link href="../assets/layui/css/layui.css" type="text/css" rel="stylesheet" />
+    <link href="../css/left.css" type="text/css" rel="stylesheet" />
+    <style>
+        form {
+            width: 75%;
+            margin-top: 40px;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .layui-form-item {
+            margin-bottom: 28px;
+        }
+
+        .layui-textarea {
+            height: 150px;
+        }
+    </style>
+
+    <script src="../lib/jquery2.0.3.js"></script>
+    <script src="../lib/jquery.cookie.js"></script>
+    <script src="../assets/layui/layui.js"></script>
+
+
+</head>
+
+<body>
+    <div id="container" class="">
+        <!-- 左边 -->
+        <div class="bg-black">
+            <div class="side-scrol">
+                <ul class="nav">
+                    <li class="logo">
+
+                        <!-- <img src="../assets/images/u80.png" class="logo_img"> -->
+                        <a href="##" class="logo_img"></a>
+                        <span class="logo_title">后台管理系统</span>
+
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">商品管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="#">商品列表</a>
+                            </dd>
+                            <dd>
+                                <a href="#">商品列表</a>
+                            </dd>
+                            <dd>
+                                <a href="#">添加商品</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">用户管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="###">用户列表</a>
+                            </dd>
+                            <dd>
+                                <a href="###">添加用户</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="nav-item nav-itemed">
+                        <a class="javascript:;" href="javascript:;">订单管理<span class="nav-more"></span></a>
+                        <dl class="nav-child">
+                            <dd>
+                                <a href="#">订单列表</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- 右边 -->
+        <div class="context">
+            <div class="context_header">
+                <span class="layui-breadcrumb">
+                    <a href="">首页</a>
+                    <a href="">商品管理</a>
+                    <a><cite>分类编辑</cite></a>
+                </span>
+            </div>
+            <!-- 内容 -->
+            <div class="context_container">
+                <div class="goods_coantainer">
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+
+
+            (function () {
+                /* 点击出现二级菜单 */
+                var key = true;
+                $(".nav-item>a").click(function () {
+                    if (key) {
+                        $(this).find("span").css({
+                            "marginTop": "-9px",
+                            "borderStyle": "dashed dashed solid",
+                            "borderColor": "transparent transparent #fff"
+                        });
+                        key = false;
+                    } else {
+                        $(this).find("span").css({
+                            "marginTop": "-3px",
+                            "borderStyle": "solid dashed dashed",
+                            "borderColor": "#fff transparent transparent"
+                        });
+                        key = true;
+                    }
+
+
+                    var str = $(this).next().stop().slideToggle();
+
+                })
+            })();
+
+
+            //拿到分类
+            let classificationGoods = location.search.split('?')[1];
+            //console.log(classificationGoods);
+
+            //请求数据渲染
+            $.ajax({
+                type: 'get',
+                data: {
+                    classificationGoods,
+                    m: 'renderClass'
+                },
+                url: '/api/classificationAdd',
+                success: function (str) {
+                    //console.log(str);
+                    var html = `<form class="layui-form" action="" data-eclass="${str[0].eclass}" data-id="${str[0].id}">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分类名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                    class="layui-input categoryName" value="${str[0].class}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">备注</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea categoryNote">${str[0].class}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="button" class="layui-btn layui-btn-lg" lay-submit="" lay-filter="demo1"
+                                    value="确认">
+
+                            </div>
+                        </div>
+
+                    </form>`;
+                    $('.goods_coantainer').html(html);
+                }
+            });
+
+    
+            //编辑分类
+            $('.goods_coantainer').on('click', '.layui-btn',function() {
+                
+                $.ajax({
+                    type: 'get',
+                    data: {
+                        m: 'edit',
+                        id: $('form').attr('data-id'),
+                        str: $('.categoryName').val(),
+                        note: $('textarea').val()
+                    },
+                    url: '/api/classificationAdd',
+                    success: function(str) {
+                        
+                        if(str.ok == 1) {
+                            alert('提交成功')
+                        }
+                    }
+                })
+            });
+
+        </script>
+        <script>
+
+            layui.use('element', function () {
+                var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+                //监听导航点击
+                element.on('nav(demo)', function (elem) {
+                    //console.log(elem)
+                    layer.msg(elem.text());
+                });
+            });
+
+
+        </script>
+
+
+</body>
+
+</html>

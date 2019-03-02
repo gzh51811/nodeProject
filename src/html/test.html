@@ -43,49 +43,23 @@
 </head>
 
 <body>
-
-    <a href="javascript:;" class="file">选择文件
-        <input type="file" name="" id="">
-    </a>
-
+<form class="layui-form" action="">
+    
+      
+       
+            <input type="checkbox"  lay-skin="primary" title="" checked="">
+            <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
+            <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled="">
+       
+    
+</form>
     <script>
-        //Demo
-        layui.use(['form', 'layer', 'upload'], function () {
-            var layer = layui.layer;
-            var upload = layui.upload;
-            var $ = layui.jquery;
-
-            upload.render({
-                elem: '#upload',
-                url: '{:U("addTL")}',
-                auto: false,//选择文件后不自动上传
-                bindAction: '#commit',
-                //上传前的回调
-                before: function () {
-                    this.data = {
-                        name: $('input[name="name"]').val()
-                    }
-                },
-                //选择文件后的回调
-                choose: function (obj) {
-                    obj.preview(function (index, file, result) {
-                        $('#preview').attr('src', result);
-                    })
-                },
-                //操作成功的回调
-                done: function (res, index, upload) {
-                    var code = res.code === 0 ? 1 : 2;
-                    layer.alert(res.msg, { icon: code }, function () {
-                        parent.window.location.reload();
-                    })
-                },
-                //上传错误回调
-                error: function (index, upload) {
-                    layer.alert('上传失败！' + index);
-                }
+        layui.use(['form'], function () {
+                var form = layui.form
+                    , layer = layui.layer
+  
             });
-        })
-
+        
     </script>
 
 </body>

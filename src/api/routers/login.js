@@ -1,7 +1,9 @@
 const express=require('express');
 const Router=express.Router();
 const bodyParser=require('body-parser');
+//引入封装了连接MongoDB的函数
 const db=require('../db');
+const token = require('../token');
 
 const mongodb=require('mongodb');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -9,12 +11,12 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 // 创建json编码解析（把请求头content-type值为application/json时的数据格式化到request.body中）
 const jsonParser = bodyParser.json();
 
-//接收前端传的数据
+//接收js中login.js前端传的数据
 Router.post('/',jsonParser,urlencodedParser,(req,res)=>{
     //获取前端的传过来的用户名和密码
     let _username=req.body.username;
     let _password=req.body.password;
-    //console.log(_username,_password)
+    // console.log(_username,_password)
 
     // //创建MongoDB客户端
     // const MongoClient =mongodb.MongoClient;
@@ -32,10 +34,12 @@ Router.post('/',jsonParser,urlencodedParser,(req,res)=>{
         (async () => {
             let name=await db.find('user',{username:_username,password:_password});
             // console.log(name)
-            if(name){
-                res.send('yes')
+            if(name.length){
+                let _token = token.create(_username);
+                
+                res.send({name,token:_token})
             }else{
-                res.send('no')
+                // res.send(name)
             }
         })()
     })

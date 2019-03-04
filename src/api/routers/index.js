@@ -12,6 +12,15 @@ const deleteGoods = require('./deleteGoods'); //删除商品
 const classificationAdd = require('./classificationAdd'); //增加分类
 const orderList = require('./orderList'); //订单列表
 
+const addRouter = require('./add');
+const userlistRouter = require('./userlist');
+const add1Router = require('./add_');
+const updataRouter = require('./updata');
+const deleteRouter = require('./delete');
+// const deleteallRouter = require('./delete-all');
+const userpageRouter = require('./userpage');
+const tokenverifyRouter = require('./tokenverify');
+
 
 
 
@@ -25,9 +34,17 @@ Router.use('/list', pageRouter);
 Router.use('/upload', uploadRouter);
 Router.use('/editGoods', editGoods);
 Router.use('/insertGoods', insertGoods);
-Router.use('/deleteGoods', deleteGoods);
+
 Router.use('/classificationAdd', classificationAdd);
 Router.use('/orderList', orderList);
+
+Router.use('/add',addRouter)//添加用户
+Router.use('/userlist',userlistRouter)//用户列表
+Router.use('/add_',add1Router)//修改用户
+Router.use('/updata',updataRouter)//更新用户
+Router.use('/delete',deleteRouter)//删除用户
+Router.use('/userpage',userpageRouter)//分页
+Router.use('/tokenverify',tokenverifyRouter)
 
 
 

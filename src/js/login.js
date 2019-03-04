@@ -60,13 +60,17 @@ $('#mima1').on('blur',function(){
                         username:username,
                         password:password
                     },function(res){
-                        // console.log(res)
-                        if(res=='yes'){
+                        console.log(res)
+                        let res1=JSON.stringify(res)
+                        if(res){
                             alert('登录成功')
-                            location.href('../index.html')
-                        }else{
+                            location.href='../index.html'
+                        }
+                        else{
                             alert('用户名或密码不正确')
                         }
+                        
+                        localStorage.setItem('user',res1);
                     })
                 }
                 else{

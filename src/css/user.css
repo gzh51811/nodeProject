@@ -1,0 +1,31 @@
+.context_header{
+    position: relative;
+}
+.yonghuming{
+    position: absolute;
+    right: 100px;
+}
+.layui-table .th1{
+    width: 50px;
+}
+.layui-table .th1 input{
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+.layui-table .th2{
+    width: 100px;
+}
+.layui-table .listGoods{
+    width: 120px;
+    min-width: 100px;
+}
+.layui-table .originalPrice{
+    width: 150px;
+}
+.layui-table .presentPrice{
+    width: 150px;
+}
+#demo7{
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+.layui-input{
+    width: 180px;
+}
+.layui-form-select{
+    display: none;
+}
+.layui-input-block select {
+    width: 180px;
+    height: 38px;
+    display: block;
+    border: 1px solid #ccc;
+}
+.layui-input-block input{
+    border: 1px solid #ccc;
+    width: 180px;
+    height: 38px;
+}
+.time{
+    border: 1px solid #ccc;
+    width: 180px;
+    height: 38px;
+    line-height: 38px;
+}
+
+
+
+
+

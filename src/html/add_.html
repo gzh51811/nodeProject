@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>添加用户</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+  <link href="../css/left.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/add.css">
+  <script src="../lib/jquery-1.10.1.min.js"></script>
+  <!-- <script src="../js/add.js"></script> -->
+  <script src="../js/add_.js"></script>
+  <script src="../js/usertoken.js"></script>
+</head>
+
+<body>
+  <div id="container" class="">
+    <!-- 左边 -->
+    <div class="bg-black">
+      <div class="side-scrol">
+        <ul class="nav">
+          <li class="logo">
+
+            <!-- <img src="../assets/images/u80.png" class="logo_img"> -->
+            <a href="##" class="logo_img"></a>
+            <span class="logo_title">后台管理系统</span>
+
+          </li>
+          <li class="nav-item nav-itemed">
+            <a class="javascript:;" href="javascript:;">商品管理<span class="nav-more"></span></a>
+            <dl class="nav-child">
+              <dd>
+                <a href="#">商品列表</a>
+              </dd>
+              <dd>
+                <a href="#">商品列表</a>
+              </dd>
+              <dd>
+                <a href="#">添加商品</a>
+              </dd>
+            </dl>
+          </li>
+          <li class="nav-item nav-itemed">
+            <a class="javascript:;" href="javascript:;">用户管理<span class="nav-more"></span></a>
+            <dl class="nav-child">
+              <dd>
+                <a href="###" class="userlist">用户列表</a>
+              </dd>
+              <dd>
+                <a href="###" class="useradd">添加用户</a>
+              </dd>
+            </dl>
+          </li>
+          <li class="nav-item nav-itemed">
+            <a class="javascript:;" href="javascript:;">订单管理<span class="nav-more"></span></a>
+            <dl class="nav-child">
+              <dd>
+                <a href="#">订单列表</a>
+              </dd>
+            </dl>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- 右边 -->
+    <div class="context">
+      <div class="context_header">
+        <span class="layui-breadcrumb">
+          <a href="">首页</a>
+          <a href="">用户管理</a>
+          <a><cite>修改用户信息</cite></a>
+        </span>
+        <span class="yonghuming">
+          <!-- <a href=""></a>
+          <a href="">退出</a> -->
+        </span>
+      </div>
+      <div class="layui-form" action="" id="biaodan">
+
+        <!-- <div class="layui-form-item">
+          <label class="layui-form-label">用户名</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input"
+              id="yonghuming">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label">密码</label>
+          <div class="layui-input-inline">
+            <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input psw">
+          </div>
+          <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label">确认密码</label>
+          <div class="layui-input-inline">
+            <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input psw1">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-inline">
+              <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input phone"
+                placeholder="请输入手机号">
+            </div>
+          </div>
+
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+              <select name="" id="xb">
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">城市</label>
+            <div class="layui-input-block">
+              <input type="text" class="city" placeholder="请输入城市" lay-verify="city">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">职业</label>
+            <div class="layui-input-block">
+              <input type="text" class="zy" placeholder="请输入职业" lay-verify="zy">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">签名</label>
+            <div class="layui-input-block">
+              <input type="text" class="qm" placeholder="请输入签名" lay-verify="qm">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">评分</label>
+            <div class="layui-input-block">
+              <input type="text" class="pf" placeholder="0-10分" lay-verify="pf">
+            </div>
+          </div>
+
+          <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+              <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+          </div> -->
+          
+          <!-- <div class="layui-form-ite">
+            <div class="layui-input-block">
+              <button class="layui-btn" lay-submit="" lay-filter="demo1">确认</button>
+            </div>
+          </div> -->
+        </div>
+
+      <!-- 示例-970 -->
+
+      <script src="../assets/layui/layui.all.js" charset="utf-8"></script>
+      <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+      <script>
+            (function () {
+                /* 点击出现二级菜单 */
+                var key = true;
+                $(".nav-item>a").click(function () {
+                    if (key) {
+                        $(this).find("span").css({
+                            "marginTop": "-9px",
+                            "borderStyle": "dashed dashed solid",
+                            "borderColor": "transparent transparent #fff"
+                        });
+                        key = false;
+                    } else {
+                        $(this).find("span").css({
+                            "marginTop": "-3px",
+                            "borderStyle": "solid dashed dashed",
+                            "borderColor": "#fff transparent transparent"
+                        });
+                        key = true;
+                    }
+
+
+                    var str = $(this).next().stop().slideToggle();
+
+                })
+            })();
+      </script>
+
+      <!-- <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+    <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">居中弹出</button>
+  </div> -->
+
+
+
+
+</body>
+
+</html>

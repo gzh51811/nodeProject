@@ -411,7 +411,7 @@ $(function () {
                 data: {
                     goods_name
                 },
-                url: 'http://localhost:1811/api/delete',
+                url: 'http://localhost:1811/api/deleteGoods',
                 success: function (str) {
                     if (str == 'yes') {
                         alert('删除商品成功')
@@ -439,7 +439,7 @@ $(function () {
                     goods_name,
                     shelves: true
                 },
-                url: 'http://localhost:1811/api/delete',
+                url: 'http://localhost:1811/api/deleteGoods',
                 success: function (str) {
                     if (str == 'yes') {
                         alert('商品下架成功');
@@ -523,7 +523,7 @@ $(function () {
                         data: {
                             goods_name
                         },
-                        url: 'http://localhost:1811/api/delete',
+                        url: 'http://localhost:1811/api/deleteGoods',
                         success: function (str) {
                             if (str == 'yes') {
 

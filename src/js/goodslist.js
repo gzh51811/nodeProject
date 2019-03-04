@@ -1,6 +1,4 @@
 $(function () {
-
-
     let qty = 8;
     let page = 1;
     //渲染数据
@@ -71,8 +69,6 @@ $(function () {
             layui.use(['laypage', 'layer'], function () {
                 var laypage = layui.laypage
                     , layer = layui.layer;
-
-
                 //完整功能
                 laypage.render({
                     elem: 'page'
@@ -101,6 +97,12 @@ $(function () {
                         //$.removeCookie('name', { path: '/' });
                         //需求： 可以按goodID/价格排序
                         let sorting = $.cookie('name');
+                        $('table').css({ 'visibility': 'hidden' });
+                        setTimeout(() => {
+                            $('.loading').css({ 'display': 'block' });
+                        }, 300);
+                        
+                        
                         //console.log(sorting);
                         $.ajax({
                             type: 'get',
@@ -111,7 +113,14 @@ $(function () {
                             },
                             url: 'http://localhost:1811/api/list/sorting/page',
                             success: function (str) {
-                                $('tbody').html(render(str.data));
+                                
+                                let time = setTimeout(() => {
+                                    $('tbody').html(render(str.data));
+                                    $('.loading').css({ 'display': 'none' });
+                                    $('table').css({ 'visibility': 'visible' });
+                                    clearTimeout(time);
+                                }, 1000);
+                                
 
                             }
                         });
@@ -154,7 +163,9 @@ $(function () {
                                                     let { curr } = obj;
                                                     let sorting = $.cookie('name');
                                                     //console.log(sorting);
-
+                                                    
+                                                    $('table').css({ 'visibility': 'hidden' });
+                                                    $('.loading').css({ 'display': 'block' });
                                                     $.ajax({
                                                         type: 'get',
                                                         data: {
@@ -166,8 +177,15 @@ $(function () {
                                                         },
                                                         url: 'http://localhost:1811/api/list/sorting/search',
                                                         success: function (str) {
+                                                           
+                                                            let time = setTimeout(() => {
+                                                                $('tbody').html(render(str.data));
+                                                                $('.loading').css({ 'display': 'none' });
+                                                                $('table').css({ 'visibility': 'visible' });
+                                                                clearTimeout(time);
+                                                            }, 1000);
                                                             //console.log(2222)
-                                                            $('tbody').html(render(str.data));
+                                                            //$('tbody').html(render(str.data));
                                                         }
                                                     });
                                                 }
@@ -305,6 +323,8 @@ $(function () {
     $('#ascending').on('click', function () {
         //用cookie存起当前的状态
         $.cookie('name', 1);
+        $('table').css({ 'visibility': 'hidden' });
+        $('.loading').css({ 'display': 'block' });
         $.ajax({
             type: 'get',
             data: {
@@ -315,7 +335,14 @@ $(function () {
             url: `http://localhost:1811/api/list/sorting`,
             success: function (str) {
                 //console.log(str.data)
-                $('tbody').html(render(str.data));
+                $('.loading').css({ 'display': 'block' });
+                let time = setTimeout(() => {
+                    $('tbody').html(render(str.data));
+                    $('.loading').css({ 'display': 'none' });
+                    $('table').css({ 'visibility': 'visible' });
+                    clearTimeout(time);
+                }, 1000);
+                //$('tbody').html(render(str.data));
 
 
             }
@@ -328,6 +355,8 @@ $(function () {
     $('#descending').on('click', function () {
         //用cookie存起当前的状态
         $.cookie('name', -1);
+        $('table').css({ 'visibility': 'hidden' });
+        $('.loading').css({ 'display': 'block' });
         $.ajax({
             type: 'get',
             data: {
@@ -338,7 +367,14 @@ $(function () {
             url: `http://localhost:1811/api/list/sorting`,
             success: function (str) {
                 //console.log(str.data)
-                $('tbody').html(render(str.data));
+                //$('tbody').html(render(str.data));
+                $('.loading').css({ 'display': 'block' });
+                let time = setTimeout(() => {
+                    $('tbody').html(render(str.data));
+                    $('.loading').css({ 'display': 'none' });
+                    $('table').css({ 'visibility': 'visible' });
+                    clearTimeout(time);
+                }, 1000);
 
             }
         });
@@ -500,14 +536,6 @@ $(function () {
             }
         }
     });
-
-
-
-
-
-
-
-
 })
 
 

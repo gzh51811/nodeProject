@@ -10,7 +10,7 @@ const insertGoods = require('./insertGoods'); //添加商品
 const editGoods = require('./edit'); //编辑商品
 const deleteGoods = require('./deleteGoods'); //删除商品
 const classificationAdd = require('./classificationAdd'); //增加分类
-
+const orderList = require('./orderList'); //订单列表
 
 
 
@@ -27,7 +27,7 @@ Router.use('/editGoods', editGoods);
 Router.use('/insertGoods', insertGoods);
 Router.use('/delete', deleteGoods);
 Router.use('/classificationAdd', classificationAdd);
-
+Router.use('/orderList', orderList);
 
 
 

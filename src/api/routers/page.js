@@ -68,7 +68,13 @@ Router.get('/sorting', (req, res) => {
         //console.log(num)
 
         // //查一页的数据
-        let data = await collecton.find().sort({ goodId: Number(sorting) }).limit(Number(qty)).toArray();
+        let data = [];
+        if (sorting) {
+            data = await collecton.find().sort({ goodId: Number(sorting) }).limit(Number(qty)).toArray();
+        } else {
+            data = await collecton.find().limit(Number(qty)).toArray();
+        }
+        
 
         //查全部返回长度
         let len = await collecton.find().toArray();
@@ -101,7 +107,14 @@ Router.get('/sorting/page', (req, res) => {
         // // 使用某个集合
         let collecton = db.collection('goods');
         let num = qty * curr;  //跳过数量
-        let data = await collecton.find().sort({ goodId: Number(sorting) }).limit(Number(qty)).skip(num).toArray();
+
+        let data = [];
+        if (sorting) {
+             data = await collecton.find().sort({ goodId: Number(sorting) }).limit(Number(qty)).skip(num).toArray();
+        } else {
+             data = await collecton.find().limit(Number(qty)).skip(num).toArray();
+        }
+        
         // //查全部返回长度
         let len = await collecton.find().toArray();
         len = len.length;

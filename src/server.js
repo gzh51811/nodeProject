@@ -11,6 +11,6 @@ const Router=require('./api/routers');
     app.use('/api',Router);
 
 //监听端口
-    app.listen(1811,()=>{
-        console.log('服务器启动成功');
+    app.listen(1888,()=>{
+        console.log('服务器启动成功:1888');
     });

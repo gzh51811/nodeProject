@@ -4,7 +4,7 @@ $(function () {
     //渲染数据
     $.ajax({
         type: "post",
-        url: 'http://localhost:1811/api/goodslistRouter',
+        url: '/api/goodslistRouter',
         data: {
             qty: qty,
             page: page
@@ -111,7 +111,7 @@ $(function () {
                                 curr: curr,
                                 qty: qty
                             },
-                            url: 'http://localhost:1811/api/list/sorting/page',
+                            url: '/api/list/sorting/page',
                             success: function (str) {
                                 
                                 let time = setTimeout(() => {
@@ -146,7 +146,7 @@ $(function () {
                                         title: title,
                                         classifiedContent: classifiedContent
                                     },
-                                    url: 'http://localhost:1811/api/list/sorting/search',
+                                    url: '/api/list/sorting/search',
                                     success: function (str) {
                                         $('tbody').html(render(str.data));
                                         //console.log(str)
@@ -175,7 +175,7 @@ $(function () {
                                                             title: title,
                                                             classifiedContent: classifiedContent
                                                         },
-                                                        url: 'http://localhost:1811/api/list/sorting/search',
+                                                        url: '/api/list/sorting/search',
                                                         success: function (str) {
                                                            
                                                             let time = setTimeout(() => {
@@ -332,7 +332,7 @@ $(function () {
                 qty: qty,
                 page: page
             },
-            url: `http://localhost:1811/api/list/sorting`,
+            url: `/api/list/sorting`,
             success: function (str) {
                 //console.log(str.data)
                 $('.loading').css({ 'display': 'block' });
@@ -364,7 +364,7 @@ $(function () {
                 qty: qty,
                 page: page
             },
-            url: `http://localhost:1811/api/list/sorting`,
+            url: `/api/list/sorting`,
             success: function (str) {
                 //console.log(str.data)
                 //$('tbody').html(render(str.data));
@@ -411,7 +411,7 @@ $(function () {
                 data: {
                     goods_name
                 },
-                url: 'http://localhost:1811/api/deleteGoods',
+                url: '/api/deleteGoods',
                 success: function (str) {
                     if (str == 'yes') {
                         alert('删除商品成功')
@@ -439,7 +439,7 @@ $(function () {
                     goods_name,
                     shelves: "true"
                 },
-                url: 'http://localhost:1811/api/deleteGoods',
+                url: '/api/deleteGoods',
                 success: function (str) {
                     if (str == 'yes') {
                         alert('商品下架成功');
@@ -524,7 +524,7 @@ $(function () {
                         data: {
                             goods_name
                         },
-                        url: 'http://localhost:1811/api/deleteGoods',
+                        url: '/api/deleteGoods',
                         success: function (str) {
                             if (str == 'yes') {
 

@@ -56,7 +56,7 @@ $(function () {
         if (username) {
             if (password) {
                 if (yzm) {
-                    $.post('http://localhost:1811/api/login', {
+                    $.post('/api/login', {
                         username: username,
                         password: password
                     }, function (res) {

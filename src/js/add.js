@@ -110,7 +110,7 @@ $(function () {
                             if (pf) {
                                 if (city) {
                                     if (zy) {
-                                        $.post('http://localhost:1811/api/add', {
+                                        $.post('/api/add', {
                                             username: yonghuming,
                                             password: psw,
                                             telephone: phone,

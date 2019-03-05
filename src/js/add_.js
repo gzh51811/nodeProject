@@ -18,7 +18,7 @@ $('.useradd').on('click',function(){
     //渲染表单和数据
     
     // console.log(data)
-    $.post('http://localhost:1811/api/add_',{
+    $.post('/api/add_',{
             dataid:now
     },
     function(res){
@@ -124,7 +124,7 @@ $('.useradd').on('click',function(){
             let time=$('.time').text();
             let text=$('.text').text();
             // console.log(yonghuming,psw,phone,city,zy,qm,pf,text)
-            $.post('http://localhost:1811/api/updata',{
+            $.post('/api/updata',{
                 username:yonghuming,
                 password:psw,
                 telephone:phone,

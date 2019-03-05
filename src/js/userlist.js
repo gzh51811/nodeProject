@@ -23,7 +23,7 @@ $('.useradd').on('click',function(){
     // })
     $.ajax({
         type:'post',
-        url:'http://localhost:1811/api/userlist',
+        url:'/api/userlist',
         data:{
             num:8,
         },
@@ -99,7 +99,7 @@ $('.useradd').on('click',function(){
                 let del1=$(this).parent().parent().parent();
                 del1.remove();
             // console.log(del1)
-            $.post('http://localhost:1811/api/delete',{
+            $.post('/api/delete',{
                 delete:del
             },function(res){
                 // console.log(res)
@@ -158,7 +158,7 @@ $('.useradd').on('click',function(){
                     //     // console.log(res)
                     $.ajax({
                         type:'post',
-                        url:'http://localhost:1811/api/delete',
+                        url:'/api/delete',
                         data:{
                         delete:nom,
                         },success:function(){
@@ -177,7 +177,7 @@ $('.useradd').on('click',function(){
             //分页
             layui.use(['laypage', 'layer'], function(){
                 let total;
-                $.get('http://localhost:1811/api/userpage',{
+                $.get('/api/userpage',{
             
             },function(res){
                 // console.log(res)
@@ -199,7 +199,7 @@ $('.useradd').on('click',function(){
                 //   console.log(obj)
                   let num=obj.curr;//下标
                 //   console.log(num)
-                  $.get('http://localhost:1811/api/userpage',{
+                  $.get('/api/userpage',{
                     index:num,
                     limit:8,
                   },

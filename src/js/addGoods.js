@@ -110,7 +110,7 @@ $('#submit').on('click', function () {
                 goods_content: goods_content,
                 imgsrc
             },
-            url: 'http://localhost:1811/api/insertGoods',
+            url: '/api/insertGoods',
             success: function (str) {
                 if (str == 'yes') {
                     alert('添加商品成功');

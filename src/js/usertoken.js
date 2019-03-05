@@ -33,7 +33,7 @@ console.log(user.token)
 if(user.token){
     //判断本地是否有token
 
-    $.post('http://localhost:1811/api/tokenverify',{
+    $.post('/api/tokenverify',{
         data:user.token,
     },function(res){
         console.log(res)
@@ -54,7 +54,7 @@ if(user.token){
 //             welcome.innerHTML = `${user.username},<button class="btn btn-outline-danger btn-sm btnLogout">退出</button>`
 //        }
 //     }
-//     xhr.open('post','http://localhost:1811/api/tokenverify',true);
+//     xhr.open('post','http://localhost1888/api/tokenverify',true);
 //     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 //     xhr.send('token='+user.token)
 // }

@@ -114,6 +114,7 @@ $('#submit').on('click', function () {
             success: function (str) {
                 if (str == 'yes') {
                     alert('添加商品成功');
+                    location.href = "./goodslist.html";
                }
             }
         });

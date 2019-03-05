@@ -4,109 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="../css/common.css" type="text/css" rel="stylesheet" />
-    <link href="../assets/layui/css/layui.css" type="text/css" rel="stylesheet" />
-    <link href="../css/left.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/user.css">
-
-    <script src="../lib/jquery-1.10.1.min.js"></script>
-    <!-- <script src="../js/userlist.js"></script> -->
-    <script src="../js/usertoken.js"></script>
-    <script src="js/index.js"></script>
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/common.js"></script>
+    <script src="lib/jquery-1.10.1.min.js"></script>
+    <script src="js/login.js"></script>
 </head>
 <body>
-    <div id="container" class="">
-        <!-- 左边 -->
-        <div class="bg-black">
-            <div class="side-scrol">
-                <ul class="nav">
-                    <li class="logo">
-
-                        <!-- <img src="../assets/images/u80.png" class="logo_img"> -->
-                        <a href="##" class="logo_img"></a>
-                        <span class="logo_title">后台管理系统</span>
-
-                    </li>
-                    <li class="nav-item nav-itemed">
-                        <a class="javascript:;" href="javascript:;">商品管理<span class="nav-more"></span></a>
-                        <dl class="nav-child">
-                            <dd>
-                                <a href="#">商品列表</a>
-                            </dd>
-                            <dd>
-                                <a href="#">商品列表</a>
-                            </dd>
-                            <dd>
-                                <a href="#">添加商品</a>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li class="nav-item nav-itemed">
-                        <a class="javascript:;" href="javascript:;">用户管理<span class="nav-more"></span></a>
-                        <dl class="nav-child">
-                            <dd>
-                                <a href="html/userlist.html" class="userlist">用户列表</a>
-                            </dd>
-                            <dd>
-                                <a href="html/add.html" class="useradd">添加用户</a>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li class="nav-item nav-itemed">
-                        <a class="javascript:;" href="javascript:;">订单管理<span class="nav-more"></span></a>
-                        <dl class="nav-child">
-                            <dd>
-                                <a href="#">订单列表</a>
-                            </dd>
-                        </dl>
-                    </li>
-                </ul>
-
-            </div>
+    <div id="login-box">
+        <div class="top">
+        <div class="img"></div>
+        <span>后台管理系统</span>
+    </div>
+    <div class="bottom">
+        <div class="yonghu"><input type="text" placeholder="用户名" id="yonghu1">
+            <img src="assets/images/yonghuming.png" alt=""></div>
+        <div class="mima"><input type="password" placeholder="密码" id="mima1">
+            <img src="assets/images/mima.png" alt=""></div>
+        <div class="yanzhengma">
+            <img src="assets/images/yanzhengma.png" alt="">
+             <input type="text" placeholder="图形验证码" id="yanzhengma1">
         </div>
-
-        <!-- 右边 -->
-        <div class="context">
-            <div class="context_header">
-                <span class="layui-breadcrumb">
-                    <a href="">首页</a>
-                </span>
-                <span class="yonghuming">
-                  <!-- <a href="" class="welcome"></a>
-                  <a href="" class="btnLogout">退出</a> -->
-                </span>
-               
-            </div>
-            <div class="url"><img src="assets/images/2.jpg" alt=""></div>
-            <script src="../assets/layui/layui.all.js"></script>
-        <script>
-            (function () {
-                /* 点击出现二级菜单 */
-                var key = true;
-                $(".nav-item>a").click(function () {
-                    if (key) {
-                        $(this).find("span").css({
-                            "marginTop": "-9px",
-                            "borderStyle": "dashed dashed solid",
-                            "borderColor": "transparent transparent #fff"
-                        });
-                        key = false;
-                    } else {
-                        $(this).find("span").css({
-                            "marginTop": "-3px",
-                            "borderStyle": "solid dashed dashed",
-                            "borderColor": "#fff transparent transparent"
-                        });
-                        key = true;
-                    }
-
-
-                    var str = $(this).next().stop().slideToggle();
-
-                })
-            })();
-        </script>
+        <span class="yanzheng"></span>
+        <div class="shurukuang">
+            <input type="checkbox">
+            <span class="jizhumima">记住密码</span>
+        </div>
+        <p class="wangji">忘记密码?</p>
+       <div class="btn">登录</div>
+    </div>
+    
+    </div>
 </body>
 </html>

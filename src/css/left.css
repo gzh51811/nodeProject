@@ -297,3 +297,8 @@ body,html {
     top: 50%;
     left: 50%;
 }
+
+.yonghuming {
+    float: right;
+    margin-right: 50px;
+}

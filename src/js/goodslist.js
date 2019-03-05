@@ -56,7 +56,7 @@ $(function () {
                                     <div class="layui-table-cell laytable-cell-1-0-11">
                                         <a class="layui-btn layui-btn-xs edit">编辑</a>
                                         <a class="layui-btn layui-btn-danger layui-btn-xs delete">删除</a>
-                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">下架</a>
+                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">上线</a>
                                     </div>
                                 </td>
                             </tr>`;
@@ -249,7 +249,7 @@ $(function () {
                                     <div class="layui-table-cell laytable-cell-1-0-11">
                                         <a class="layui-btn layui-btn-xs edit">编辑</a>
                                         <a class="layui-btn layui-btn-danger layui-btn-xs delete">删除</a>
-                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">下架</a>
+                                        <a class="layui-btn layui-btn-normal layui-btn-xs shelves">上线</a>
                                     </div>
                                 </td>
                             </tr>`;
@@ -424,7 +424,7 @@ $(function () {
 
     //商品下架
     $('#tbody').on('click', '.shelves', function () {
-
+        var _this = $(this);
         let res = window.confirm('您真的需要下架该商品吗？');
         if (res) {
             let goods_name = '';
@@ -437,12 +437,13 @@ $(function () {
                 type: 'get',
                 data: {
                     goods_name,
-                    shelves: true
+                    shelves: "true"
                 },
                 url: 'http://localhost:1811/api/deleteGoods',
                 success: function (str) {
                     if (str == 'yes') {
                         alert('商品下架成功');
+                        _this.html("下架");
                     }
                 }
             })

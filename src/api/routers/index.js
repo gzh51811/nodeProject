@@ -34,7 +34,7 @@ Router.use('/list', pageRouter);
 Router.use('/upload', uploadRouter);
 Router.use('/editGoods', editGoods);
 Router.use('/insertGoods', insertGoods);
-
+Router.use('/deleteGoods', deleteGoods);
 Router.use('/classificationAdd', classificationAdd);
 Router.use('/orderList', orderList);
 

@@ -37,9 +37,9 @@ Router.post('/',jsonParser,urlencodedParser,(req,res)=>{
             if(name.length){
                 let _token = token.create(_username);
                 
-                res.send({name,token:_token})
+                res.send({name,token:_token, status: 'ok'})
             }else{
-                // res.send(name)
+                res.send({ status: 'no'})
             }
         })()
     })

@@ -64,7 +64,7 @@ if(user.token){
         if(e.target.classList.contains('btnLogout')){
             localStorage.removeItem('user');
             location.reload();
-            location.href="login.html";
+            location.href="../index.html";
         }
     }
 })()

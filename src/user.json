@@ -1,0 +1,11 @@
+{"_id":{"$oid":"5c7cededd13ff85854790aea"},"username":"老谢","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"10","city":"广州","zy":"前端","text":"1","dataid":1,"time":"2019-3-4"}
+{"_id":{"$oid":"5c7cee21d13ff85854790aeb"},"username":"malin","password":"123456","telephone":"18379794399","signature":"10","gender":"女","grade":"1","city":"广州","zy":"前端","text":"10","dataid":2,"time":"2019-3-4"}
+{"_id":{"$oid":"5c7cee3fd13ff85854790aec"},"username":"weixiao","password":"123456","telephone":"18379794399","signature":"10","gender":"男","grade":"0","city":"广州","zy":"1","text":"1","dataid":3,"time":"2019-3-4"}
+{"_id":{"$oid":"5c7cee75d13ff85854790aed"},"username":"lemon","password":"123456","telephone":"18379794399","signature":"1","gender":"女","grade":"2","city":"广州","zy":"前端","text":"0","dataid":4,"time":"2019-3-4"}
+{"_id":{"$oid":"5c7ceea7d13ff85854790aee"},"username":"洲洲","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"0","city":"广西","zy":"技师","text":"1","dataid":5,"time":"2019-3-4"}
+{"_id":{"$oid":"5c7de5f719cf0d5fb4a778c3"},"username":"小铭","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"2","city":"广州","zy":"前端","text":"0","dataid":6,"time":"2019-3-5"}
+{"_id":{"$oid":"5c7de61f19cf0d5fb4a778c4"},"username":"宇哥哥","password":"123456","telephone":"18379794399","signature":"1","gender":"男","grade":"0","city":"广州","zy":"技师","text":"0","dataid":7,"time":"2019-3-5"}
+{"_id":{"$oid":"5c7de65f19cf0d5fb4a778c5"},"username":"斌哥","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"10","city":"江西","zy":"一号技师","text":"0","dataid":8,"time":"2019-3-5"}
+{"_id":{"$oid":"5c7de68a19cf0d5fb4a778c6"},"username":"微笑","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"10","city":"赣州","zy":"前端","text":"0","dataid":9,"time":"2019-3-5"}
+{"_id":{"$oid":"5c7de6cb19cf0d5fb4a778c7"},"username":"峰哥","password":"123456","telephone":"18379794399","signature":"2","gender":"男","grade":"0","city":"信丰","zy":"二号技师","text":"的","dataid":10,"time":"2019-3-5"}
+{"_id":{"$oid":"5c7de70319cf0d5fb4a778c8"},"username":"婧婧","password":"123456","telephone":"18379794399","signature":"1","gender":"男","grade":"2","city":"广州","zy":"前端大佬","text":"的","dataid":11,"time":"2019-3-5"}
